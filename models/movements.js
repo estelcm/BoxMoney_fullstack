@@ -30,6 +30,60 @@ module.exports = class Movements {
     ]);
   }
 
+  static getUnexpected() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "unexpected",
+    ]);
+  }
+
+  static getfixed() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "fixed",
+    ]);
+  }
+
+  static getdaily() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "daily",
+    ]);
+  }
+
+  static getAnt() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "ant",
+    ]);
+  }
+
+  static getWhim() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "whim",
+    ]);
+  }
+
+  static getAnt() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "ant",
+    ]);
+  }
+
+  static getMatNeed() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "material need",
+    ]);
+  }
+
+  static getMedical() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "medical",
+    ]);
+  }
+
+  static getSavings() {
+    return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
+      "savings",
+    ]);
+  }
+
   //   static getById(id) {}
 
   //   static create() {}
