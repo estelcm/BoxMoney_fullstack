@@ -1,0 +1,20 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "In this project will type the instructions to run our project npm run dev, or stars, the port used, and how does it work de sql database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon app.js",
+    "migrate" : "node ./config/database.js"
+  },
+  "author": "Estel",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1"
+  }
+}
