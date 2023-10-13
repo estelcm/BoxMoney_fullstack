@@ -1,7 +1,7 @@
 const db = require("../config/database");
 
-const typeMov = {
-  salay: "salary",
+const type = {
+  salary: "salary",
   unexpected: "unexpected",
   fixed: "fixed",
   daily: "daily",
@@ -17,7 +17,8 @@ module.exports = class Movements {
     (this.name = name),
       (this.description = description),
       (this.amount = amount),
-      (this.type = typeMov[movementType]);
+      // (this.type = type[movementType]);
+      (this.type = movementType);
   }
 
   static getAll() {
@@ -36,13 +37,13 @@ module.exports = class Movements {
     ]);
   }
 
-  static getfixed() {
+  static getFixed() {
     return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
       "fixed",
     ]);
   }
 
-  static getdaily() {
+  static getDaily() {
     return db.execute("SELECT * FROM movements WHERE movements.type = ?", [
       "daily",
     ]);
@@ -84,9 +85,26 @@ module.exports = class Movements {
     ]);
   }
 
-  //   static getById(id) {}
+  /* ------ GetById ------ */
+  static getById(id) {
+    return db.execute(`SELECT * FROM movements WHERE movements.id = ${id}`);
+  }
+  /* ------ create ------ */
+  // create() {
+  //   return db.execute(
+  //     `INSERT INTO movements (name, description, amount, type) VALUES ('${this.name}', '${this.description}', '${this.amount}', '${this.type}')`
+  //   );
+  // }
 
-  //   static create() {}
-
-  //   static delete(id) {}
+  save() {
+    // opción 1:
+    // return db.execute("INSERT INTO home (name, price, description, room) VALUES (?,?,?,?)", [this.name, this.price, this.description, this.room])
+    // opción 2:
+    return db.execute(
+      `INSERT INTO movements (name, description, amount, type) VALUES ('${this.name}','${this.description}','${this.amount}','${this.type}')`
+    );
+  }
+  static delete(id) {
+    return db.execute(`DELETE FROM movements WHERE movements.id = ${id}`);
+  }
 };
