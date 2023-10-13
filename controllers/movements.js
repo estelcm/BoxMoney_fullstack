@@ -147,31 +147,31 @@ const getMovement = (req, resp) => {
 };
 
 // /**** CREATE  ****/
-// const createMovement = (req, resp) => {
-//   //vamos a destructurar y vamos a sacar el name el price por separado...
-//   //y se la pasamoa a mi instancia
-//   const { name, description, amount, type } = req.body;
-//   const moneyMovement = new Movements(name, description, amount, type);
-//   //lamamos a la funcion create que viene de models e insert una nueva linia en la tabla
-//   moneyMovement
-//     .create()
-//     .then(() => resp.status(201).send({ data: moneyMovement }))
-//     .catch((err) => {
-//       resp.status(500);
-//       console.log(err);
-//     });
-// };
-const saveMov = (req, res) => {
+const createMovement = (req, resp) => {
+  //vamos a destructurar y vamos a sacar el name el price por separado...
+  //y se la pasamoa a mi instancia
   const { name, description, amount, type } = req.body;
-  const newMov = new Movements(name, description, amount, type);
-  newMov
-    .save()
-    .then(() => res.status(201).send({ data: newMov }))
+  const moneyMovement = new Movements(name, description, amount, type);
+  //lamamos a la funcion create que viene de models e insert una nueva linia en la tabla
+  moneyMovement
+    .create()
+    .then(() => resp.status(201).send({ data: moneyMovement }))
     .catch((err) => {
-      res.status(500);
+      resp.status(500);
       console.log(err);
     });
 };
+// const saveMov = (req, res) => {
+//   const { name, description, amount, type } = req.body;
+//   const newMov = new Movements(name, description, amount, type);
+//   newMov
+//     .save()
+//     .then(() => res.status(201).send({ data: newMov }))
+//     .catch((err) => {
+//       res.status(500);
+//       console.log(err);
+//     });
+// };
 /**** DELETE MOVEMENT  ****/
 const deleteMovement = (req, resp) => {
   const id = req.params.id;
@@ -195,7 +195,7 @@ module.exports = {
   getMedicalM,
   getSavingsM,
   getMovement,
-  // createMovement,
-  saveMov,
+  createMovement,
+  // saveMov,
   deleteMovement,
 };

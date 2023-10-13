@@ -11,8 +11,8 @@ const {
   getMedicalM,
   getSavingsM,
   getMovement,
-  // createMovement,
-  saveMov,
+  createMovement,
+  // saveMov,
   deleteMovement,
 } = require("../controllers/movements");
 
@@ -26,8 +26,8 @@ router.get("/mov/medical", getMedicalM);
 router.get("/mov/savings", getSavingsM);
 router.get("/mov/:id", getMovement);
 
-// router.post("/mov", createMovement);
-router.post("/mov", saveMov);
+router.post("/mov", createMovement);
+// router.post("/mov", saveMov);
 router.delete("/mov/:id", deleteMovement);
 
 // router.get("/home-products/:id", getProduct);

@@ -90,20 +90,20 @@ module.exports = class Movements {
     return db.execute(`SELECT * FROM movements WHERE movements.id = ${id}`);
   }
   /* ------ create ------ */
-  // create() {
-  //   return db.execute(
-  //     `INSERT INTO movements (name, description, amount, type) VALUES ('${this.name}', '${this.description}', '${this.amount}', '${this.type}')`
-  //   );
-  // }
-
-  save() {
-    // opción 1:
-    // return db.execute("INSERT INTO home (name, price, description, room) VALUES (?,?,?,?)", [this.name, this.price, this.description, this.room])
-    // opción 2:
+  create() {
     return db.execute(
-      `INSERT INTO movements (name, description, amount, type) VALUES ('${this.name}','${this.description}','${this.amount}','${this.type}')`
+      `INSERT INTO movements (name, description, amount, type) VALUES ('${this.name}', '${this.description}', '${this.amount}', '${this.type}')`
     );
   }
+
+  // save() {
+  //   // opción 1:
+  //   // return db.execute("INSERT INTO home (name, price, description, room) VALUES (?,?,?,?)", [this.name, this.price, this.description, this.room])
+  //   // opción 2:
+  //   return db.execute(
+  //     `INSERT INTO movements (name, description, amount, type) VALUES ('${this.name}','${this.description}','${this.amount}','${this.type}')`
+  //   );
+  // }
   static delete(id) {
     return db.execute(`DELETE FROM movements WHERE movements.id = ${id}`);
   }

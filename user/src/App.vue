@@ -5,15 +5,16 @@
     <form class="flex flex-col">
       <label for="name">name</label>
       <input type="text" v-model="name" />
-      <label for="amount">description</label>
+
+      <label for="description">description</label>
       <input type="text" v-model="description" />
-      <label for="description">amount</label>
+
+      <label for="amount">amount</label>
       <input type="text" v-model="amount" />
       <!-- type of movement -->
-      <label for="type">type</label>
-      <input type="text" v-model="type" />
-      <!-- <select v-model="type" id="type">
-        <option value="" disabled>Select a type</option>
+      <label for="type">type : </label>
+      <!-- <input type="text" v-model="type" /> -->
+      <select v-model="type" id="type">
         <option value="Salary">Salary</option>
         <option value="Unexpected">Unexpected</option>
         <option value="Fixed">Fixed</option>
@@ -23,10 +24,11 @@
         <option value="Material Need">Material Need</option>
         <option value="Medical">Medical</option>
         <option value="Savings">Savings</option>
-      </select> -->
-      <button @click.prevent="saveMov">Send</button>
+      </select>
+      <button @click.prevent="postMovement">Send</button>
+      <!-- <button @click.prevent="saveMov">Send</button> -->
     </form>
-    <h1>{{ newMov }}</h1>
+
     <!-- View movements -->
     <div class="flex">
       <button @click.prevent="getMovements">get movements</button>
@@ -80,45 +82,45 @@ export default {
       return (this.movement = data.data[0]);
     },
 
-    // async postMovement() {
-    //   const newMovement = {
-    //     name: this.name,
-    //     description: this.description,
-    //     amount: this.amount,
-    //     type: this.type,
-    //   };
-    //   try {
-    //     const response = await fetch(`http://localhost:2347/api/mov`, {
-    //       method: "POST",
-    //       mode: "cors",
-    //       headers: { "Content-type": "application/json; charset=UTF-8" },
-    //       body: JSON.stringify({ newMovement }),
-    //     });
-    //     const data = await response.json();
-    //     //return (this.newMov = data.data);
-    //     console.log(data);
-    //     // return this.movements.push(data.data);
-    //   } catch (err) {
-    //     console.log(err, "error");
-    //   }
-    // },
-
-    async saveMov() {
-      const newMov = {
+    async postMovement() {
+      const newMovement = {
         name: this.name,
         description: this.description,
         amount: this.amount,
         type: this.type,
       };
-      const response = await fetch("http://localhost:2347/api/mov", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(newMov),
-      });
-      const data = await response.json();
-      // console.log(data.data)
-      return this.movements.push(data.data);
+
+      try {
+        const response = await fetch(`http://localhost:2347/api/mov`, {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(newMovement),
+        });
+        const data = await response.json();
+        //return (this.newMov = data.data);
+        console.log(data);
+        return this.movements.push(data.data);
+      } catch (err) {
+        console.log(err, "error");
+      }
     },
+
+    // async saveMov() {
+    //   const newMov = {
+    //     name: this.name,
+    //     description: this.description,
+    //     amount: this.amount,
+    //     type: this.type,
+    //   };
+    //   const response = await fetch("http://localhost:2347/api/mov", {
+    //     method: "POST",
+    //     headers: { "Content-type": "application/json" },
+    //     body: JSON.stringify(newMov),
+    //   });
+    //   const data = await response.json();
+    //   // console.log(data.data)
+    //   return this.movements.push(data.data);
+    // },
   },
 };
 </script>
