@@ -44,7 +44,10 @@
         </li>
       </ul>
 
-      <h3>{{ movement.name }}</h3>
+      <h3>Selected movement:{{ movement.name }}</h3>
+      <button @click.prevent="deleteMovement(movement.id)">
+        delete movement
+      </button>
     </div>
   </div>
 </template>
@@ -62,7 +65,7 @@ export default {
       amount: "",
       type: "",
 
-      newMov: "",
+      newMov: "", //I think it is not being used
     };
   },
 
@@ -121,6 +124,24 @@ export default {
     //   // console.log(data.data)
     //   return this.movements.push(data.data);
     // },
+
+    async deleteMovement(id) {
+      try {
+        const response = await fetch(`http://localhost:2347/api/mov/${id}`, {
+          method: "DELETE",
+          headers: { "Content-type": "application/json" },
+        });
+        if (response.status === 204) {
+          // The resource was successfully deleted (status code 204: No Content)
+          console.log("Resource deleted successfully");
+        } else {
+          // Handle other response statuses if needed
+          console.log("Failed to delete resource");
+        }
+      } catch (err) {
+        console.log(err, "error");
+      }
+    },
   },
 };
 </script>
