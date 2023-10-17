@@ -13,14 +13,46 @@ const type = {
 };
 
 module.exports = class Movements {
-  constructor(name, description, amount, movementType) {
+  //posar total al constructor que vindra precalcular al momet de crearlo
+  constructor(name, description, amount, movementType, currentTotal) {
     (this.name = name),
       (this.description = description),
       (this.amount = amount),
       // (this.type = type[movementType]);
-      (this.type = movementType);
+      (this.type = movementType),
+      // (this.movementsList = []),
+      (this.total = currentTotal);
+    // (this.total = this.updateTotal());
+    //crear metodo para calcular el total
   }
 
+  // addMovement(name, description, amount, type) {
+  //   const movement = {
+  //     name,
+  //     description,
+  //     amount,
+  //     type,
+  //   };
+
+  //   // this.movementsList.push(movement);
+  //   // this.updateTotal();
+  // }
+
+  // updateTotal() {
+  //   //primer hauria d'anar fent push del primer total. llavora ferho recursiu
+  //   //que cada vegada vagi a agafar lultim i el calculi amb lo del reduce.
+  //   //pero cal? fent servir la taula q ja esta organitzada no en tindriem prou per refrenciar-ho?
+  //   //thi.movements.reduce no estic entrant a amount
+  //   this.total = this.movementsList.reduce((acc, movement) => {
+  //     if (movement.type === "salary" || movement.type === "unexpected") {
+  //       return acc + movement.amount;
+  //     } else {
+  //       return acc - movement.amount;
+  //     }
+  //     //this 0 is for how it starts the count
+  //   }, 0);
+  //   return this.total;
+  // }
   static getAll() {
     return db.execute("SELECT * FROM movements");
   }
@@ -92,7 +124,7 @@ module.exports = class Movements {
   /* ------ create ------ */
   create() {
     return db.execute(
-      `INSERT INTO movements (name, description, amount, type) VALUES ('${this.name}', '${this.description}', '${this.amount}', '${this.type}')`
+      `INSERT INTO movements (name, description, amount, type, total) VALUES ('${this.name}', '${this.description}', '${this.amount}', '${this.type}', '${this.total}')`
     );
   }
 

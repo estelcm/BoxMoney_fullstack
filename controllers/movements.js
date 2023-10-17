@@ -150,8 +150,9 @@ const getMovement = (req, resp) => {
 const createMovement = (req, resp) => {
   //vamos a destructurar y vamos a sacar el name el price por separado...
   //y se la pasamoa a mi instancia
-  const { name, description, amount, type } = req.body;
-  const moneyMovement = new Movements(name, description, amount, type);
+  const { name, description, amount, type, total } = req.body;
+  const moneyMovement = new Movements(name, description, amount, type, total);
+
   //lamamos a la funcion create que viene de models e insert una nueva linia en la tabla
   moneyMovement
     .create()
