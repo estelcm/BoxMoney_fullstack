@@ -12,7 +12,9 @@
     <div
       class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5"
     >
-      <span class="text-white text-lg font-bold">{{ showTotal }}€</span>
+      <span class="text-white text-lg font-bold"
+        >{{ movements[movements.length - 1].total }}€</span
+      >
     </div>
     <div
       class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
