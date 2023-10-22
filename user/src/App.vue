@@ -8,108 +8,21 @@
     <span class="text-white text-lg font-bold">{{ showTotal }}€</span>
   </div> -->
   <!-- ** total ** -->
-  <div class="relative text-center mb-2">
-    <div
-      class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5"
-    >
-      <span class="text-white text-lg font-bold"
-        >{{ movements[movements.length - 1].total }}€</span
+  <Router-link to="/list">
+    <div class="relative text-center mb-2">
+      <div
+        class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5"
       >
-    </div>
-    <div
-      class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
-    ></div>
-  </div>
-  <!-- ** minilist of movements** -->
-  <div>
-    <ul class="text-center">
-      <li class="text-zinc-700 font-thin">
-        {{ movements[movements.length - 1]?.amount }}
-      </li>
-      <li class="text-zinc-500 font-thin">
-        {{ movements[movements.length - 2]?.amount }}
-      </li>
-      <li class="text-zinc-400 font-thin">
-        {{ movements[movements.length - 3]?.amount }}
-      </li>
-      <li class="text-zinc-300 font-thin">
-        {{ movements[movements.length - 4]?.amount }}
-      </li>
-    </ul>
-  </div>
-  <!--  ** Form **  -->
-  <div>
-    <div id="fillForm" class="flex flex-col gap-6">
-      <form class="flex flex-col">
-        <div class="my-4 relative">
-          <input
-            type="number"
-            v-model="amount"
-            class="peer w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-thin text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-red-200 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-            placeholder=""
-          />
-          <label
-            for="amount"
-            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex w-full select-none text-[11px] font-thin leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-indigo-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-indigo-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-indigo-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-          >
-            Amount €
-          </label>
-        </div>
-        <div class="my-4 relative">
-          <input
-            type="text"
-            v-model="name"
-            class="peer w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-thin text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-cyan-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-            placeholder=""
-          />
-          <label
-            for="name"
-            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex w-full select-none text-[11px] font-thin leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-indigo-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-indigo-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-indigo-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-          >
-            Transaction Name
-          </label>
-        </div>
-        <div class="my-4 relative">
-          <input
-            type="text"
-            v-model="description"
-            class="peer w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-thin text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-cyan-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-            placeholder=""
-          />
-          <label
-            for="description"
-            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex w-full select-none text-[11px] font-thin leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-indigo-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-indigo-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-indigo-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-          >
-            Any reason?
-          </label>
-        </div>
-        <div class="relative">
-          <select
-            v-model="type"
-            id="type"
-            class="mb-6 pr-4 bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-cyan-400 dark:focus:border-cyan-400"
-          >
-            <option value="" disabled selected>Type of transaction</option>
-            <option value="Salary">Salary</option>
-            <option value="Unexpected">Unexpected</option>
-            <option value="Fixed">Fixed</option>
-            <option value="Daily">Daily</option>
-            <option value="Ant">Ant</option>
-            <option value="Whim">Whim</option>
-            <option value="Material Need">Material Need</option>
-            <option value="Medical">Medical</option>
-            <option value="Savings">Savings</option>
-          </select>
-        </div>
-        <button
-          @click.prevent="postMovement"
-          class="my-2 relative h-10 w-full min-w-[200px] text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2"
+        <span class="text-white text-lg font-bold"
+          >{{ movements[movements.length - 1]?.total }}€</span
         >
-          OK
-        </button>
-      </form>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
+      ></div>
     </div>
-  </div>
+  </Router-link>
+  <Router-link to="/"></Router-link>
 
   <!-- View movements -->
   <!-- <div>
@@ -130,6 +43,8 @@
       delete movement
     </button>
   </div> -->
+
+  <RouterView />
 </template>
 
 <script>
@@ -138,7 +53,7 @@ export default {
   name: "App",
   data() {
     return {
-      movements: "",
+      movements: [],
       movement: "",
       name: "",
       description: "",

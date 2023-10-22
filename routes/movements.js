@@ -30,12 +30,4 @@ router.post("/mov", createMovement);
 // router.post("/mov", saveMov);
 router.delete("/mov/:id", deleteMovement);
 
-// router.get("/home-products/:id", getProduct);
-
-// router.post("/home-products", createProduct);
-
-// router.put("/home-products/:id", updateProduct);
-
-// router.delete("/home-products/:id", deleteProduct);
-
 module.exports = router;
