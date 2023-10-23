@@ -94,6 +94,36 @@ const getAntM = (req, resp) => {
       console.log(err);
     });
 };
+/**** GET WHIM  ****/
+const getWhimM = (req, resp) => {
+  Movements.getWhim()
+    .then((data) => {
+      if (data[0].length) {
+        resp.status(200).send({ data: data[0] });
+      } else {
+        resp.status(404).send({ msg: "No whim movements found" });
+      }
+    })
+    .catch((err) => {
+      resp.status(500).send({ msg: "Internal server error" });
+      console.log(err);
+    });
+};
+/**** GET MATERIAL NEED  ****/
+const getMatNeedM = (req, resp) => {
+  Movements.getMatNeed()
+    .then((data) => {
+      if (data[0].length) {
+        resp.status(200).send({ data: data[0] });
+      } else {
+        resp.status(404).send({ msg: "No material need movements found" });
+      }
+    })
+    .catch((err) => {
+      resp.status(500).send({ msg: "Internal server error" });
+      console.log(err);
+    });
+};
 /**** GET MEDICAL  ****/
 const getMedicalM = (req, resp) => {
   Movements.getMedical()
@@ -193,6 +223,8 @@ module.exports = {
   getFixedM,
   getDailyM,
   getAntM,
+  getWhimM,
+  getMatNeedM,
   getMedicalM,
   getSavingsM,
   getMovement,

@@ -13,10 +13,18 @@
   </div> -->
 
   <!-- button to filter by type -->
-  <div></div>
-  <!-- list of all movements-->
   <div>
-    <div id="app" class="p-4 flex justify-center">
+    <select v-model="selectedType" @change="fetchMovementsByType">
+      <option value="">All movements</option>
+      <option v-for="(value, key) in typeOptions" :value="key" :key="key">
+        {{ value }}
+      </option>
+    </select>
+  </div>
+  <!-- list of all movements-->
+  <!-- <div v-if="!showMovementsByType"> -->
+  <div v-if="!showMovementsByType">
+    <div id="tableAll" class="p-4 flex justify-center">
       <table class="min-w-min divide-y divide-gray-400 table-auto text-left">
         <thead>
           <tr>
@@ -74,13 +82,77 @@
                 class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
               >
                 <!-- Contenido del botón de eliminación -->
-                <button @click="deleteMovement(movements[index].id)">X</button>
+                <button
+                  @click="deleteMovement(movements[index].id)"
+                  class="hover:rounder-md hover:text-orange-400"
+                >
+                  X
+                </button>
               </td>
             </tr>
           </template>
         </tbody>
       </table>
     </div>
+  </div>
+  <!-- table for selected types movements -->
+  <!-- <div v-else> -->
+  <div v-else>
+    <div id="tableType" class="p-4 flex justify-center"></div>
+    <table class="min-w-min divide-y divide-gray-400 table-auto text-left">
+      <thead>
+        <tr>
+          <th
+            class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+          >
+            Name
+          </th>
+          <th
+            class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+          >
+            Type
+          </th>
+          <th
+            class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+          >
+            Amount
+          </th>
+          <th
+            class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+          >
+            Date
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="index in Object.keys(movementsTyped).reverse()"
+          :key="movementsTyped[index].id"
+          class="border border-r-white border-l-white border-b-orange-200"
+        >
+          <td
+            class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
+          >
+            {{ movementsTyped[index].name }}
+          </td>
+          <td
+            class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
+          >
+            {{ movementsTyped[index].type }}
+          </td>
+          <td
+            class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap text-center"
+          >
+            {{ movementsTyped[index].amount }}
+          </td>
+          <td
+            class="px-1 py-1 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
+          >
+            {{ formatDate(movementsTyped[index].date) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -96,6 +168,20 @@ export default {
       amount: "",
       type: "",
       listOfLastFour: "",
+      selectedType: "",
+      showMovementsByType: "", //bolean propoerty v-if
+      movementsTyped: "",
+      typeOptions: {
+        salary: "Salary",
+        unexpected: "Unexpected",
+        fixed: "Fixed",
+        daily: "Daily",
+        ant: "Ant",
+        whim: "Whim",
+        mat_need: "Material need",
+        medical: "Medical",
+        savings: "Savings",
+      }, //property to keep the type form the fetch
     };
   },
   mounted() {
@@ -136,6 +222,53 @@ export default {
 
       return (this.movement = data.data[0]);
     },
+
+    /****** get selected type *********/
+    async fetchMovementsByType() {
+      if (this.selectedType) {
+        try {
+          let response;
+          if (this.selectedType === "salary") {
+            response = await fetch(`http://localhost:2347/api/mov/salary`);
+          } else if (this.selectedType === "unexpected") {
+            response = await fetch(`http://localhost:2347/api/mov/unexpected`);
+          } else if (this.selectedType === "fixed") {
+            response = await fetch(`http://localhost:2347/api/mov/fixed`);
+          } else if (this.selectedType === "daily") {
+            response = await fetch(`http://localhost:2347/api/mov/daily`);
+          } else if (this.selectedType === "ant") {
+            response = await fetch(`http://localhost:2347/api/mov/ant`);
+          } else if (this.selectedType === "whim") {
+            response = await fetch(`http://localhost:2347/api/mov/whim`);
+          } else if (this.selectedType === "mat_need") {
+            response = await fetch(`http://localhost:2347/api/mov/mat_need`);
+          } else if (this.selectedType === "medical") {
+            response = await fetch(`http://localhost:2347/api/mov/medical`);
+          } else if (this.selectedType === "savings") {
+            response = await fetch(`http://localhost:2347/api/mov/savings`);
+          }
+
+          if (response.ok) {
+            const data = await response.json();
+            this.showMovementsByType = true;
+            this.movementsTyped = data.data;
+            console.log("this is de typed movements:" + data.data[0]); // Update list with selected type movements
+            return this.movementsTyped;
+          } else {
+            console.error(
+              `Error al obtener los movimientos. Código de estado: ${response.status}`
+            );
+          }
+        } catch (error) {
+          console.error("Error al obtener los movimientos:", error);
+        }
+      } else {
+        // If no type is selected, show all movements
+        this.showMovementsByType = false;
+        this.getMovements();
+      }
+    },
+
     /****** create ******/
     async postMovement() {
       const lastTotal = this.movements[this.movements.length - 1].total;

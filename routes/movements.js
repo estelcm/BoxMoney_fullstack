@@ -8,6 +8,8 @@ const {
   getFixedM,
   getDailyM,
   getAntM,
+  getWhimM,
+  getMatNeedM,
   getMedicalM,
   getSavingsM,
   getMovement,
@@ -22,6 +24,8 @@ router.get("/mov/unexpected", getUnexpectedM);
 router.get("/mov/fixed", getFixedM);
 router.get("/mov/daily", getDailyM);
 router.get("/mov/ant", getAntM);
+router.get("/mov/whim", getWhimM);
+router.get("/mov/mat_need", getMatNeedM);
 router.get("/mov/medical", getMedicalM);
 router.get("/mov/savings", getSavingsM);
 router.get("/mov/:id", getMovement);
