@@ -11,58 +11,76 @@
       class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
     ></div>
   </div> -->
+
+  <!-- button to filter by type -->
+  <div></div>
   <!-- list of all movements-->
-  <div id="app" class="p-4">
-    <table class="min-w-min divide-y divide-gray-200">
-      <thead>
-        <tr>
-          <th
-            class="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider font-thin"
+  <div>
+    <div id="app" class="p-4 flex justify-center">
+      <table class="min-w-min divide-y divide-gray-400 table-auto text-left">
+        <thead>
+          <tr>
+            <th
+              class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+            >
+              Name
+            </th>
+            <th
+              class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+            >
+              Type
+            </th>
+            <th
+              class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+            >
+              amount
+            </th>
+            <th
+              class="px-2 py-2 text-xs text-gray-500 uppercase tracking-wider font-thin"
+            >
+              Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <template
+            v-for="index in Object.keys(movements).reverse()"
+            :key="movements[index].id"
           >
-            Name
-          </th>
-          <th
-            class="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider font-thin"
-          >
-            Type
-          </th>
-          <th
-            class="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider font-thin"
-          >
-            Amount
-          </th>
-          <th
-            class="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider font-thin"
-          >
-            Date
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="movement in movements" :key="movement.id">
-          <td
-            class="px-1 py-1 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
-          >
-            {{ movement.name }}
-          </td>
-          <td
-            class="px-1 py-1 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
-          >
-            {{ movement.type }}
-          </td>
-          <td
-            class="px-1 py-1 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
-          >
-            {{ movement.amount }}
-          </td>
-          <td
-            class="px-1 py-1 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
-          >
-            {{ formatDate(movement.date) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <tr
+              class="border border-r-white border-l-white border-b-orange-200"
+            >
+              <td
+                class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
+              >
+                {{ movements[index].name }}
+              </td>
+              <td
+                class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
+              >
+                {{ movements[index].type }}
+              </td>
+              <td
+                class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap text-center"
+              >
+                {{ movements[index].amount }}
+              </td>
+              <td
+                class="px-1 py-1 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
+              >
+                {{ formatDate(movements[index].date) }}
+              </td>
+              <td
+                class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
+              >
+                <!-- Contenido del botón de eliminación -->
+                <button @click="deleteMovement(movements[index].id)">X</button>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
