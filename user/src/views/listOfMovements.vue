@@ -14,8 +14,12 @@
 
   <!-- button to filter by type -->
   <div>
-    <select v-model="selectedType" @change="fetchMovementsByType">
-      <option value="">All movements</option>
+    <select
+      v-model="selectedType"
+      @change="fetchMovementsByType"
+      class="py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-thin"
+    >
+      <option value="" class="font-thin">All movements</option>
       <option v-for="(value, key) in typeOptions" :value="key" :key="key">
         {{ value }}
       </option>

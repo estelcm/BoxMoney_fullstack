@@ -1,5 +1,13 @@
 <template>
-  <h1 class="text-3xl font-bold underline text-blue-500">Conscious Get By</h1>
+  <Router-Link to="/">
+    <div class="flex justify-center">
+      <img
+        src="./img/Recurso 1.png"
+        alt="logo"
+        class="w-24 h-24 mt-4 mb-2"
+      /></div
+  ></Router-Link>
+
   <!-- poner aqui un link logo daily flux y otro Savings -->
 
   <!-- <div
@@ -11,14 +19,14 @@
   <Router-link to="/list">
     <div class="relative text-center mb-2">
       <div
-        class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5"
+        class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5"
       >
         <span class="text-white text-lg font-bold"
           >{{ movements[movements.length - 1]?.total }}€</span
         >
       </div>
       <div
-        class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
+        class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600"
       ></div>
     </div>
   </Router-link>
@@ -180,6 +188,9 @@ export default {
         // sense aixo a mi em funciona const data =await response.json();
         if (response.status === 204) {
           //  (status code 204: No Content)
+          //this.showTotal -= deletedMovement.amount;
+          //delete not working it shoul be a + or - with the same amount
+          //as it is done in banking
           console.log("Resource deleted successfully");
         } else {
           // Handle other response statuses if needed
