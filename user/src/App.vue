@@ -1,13 +1,30 @@
 <template>
-  <Router-Link to="/">
-    <div class="flex justify-center">
-      <img
-        src="./img/Recurso 1.png"
-        alt="logo"
-        class="w-24 h-24 mt-4 mb-2"
-      /></div
-  ></Router-Link>
-
+  <div class="flex justify-around">
+    <RouterLink to="/"
+      ><button
+        class="bg-gray-800 text-xs text-white rounded-full w-16 h-16 flex items-center justify-center mt-9 hover:bg-cyan-400"
+        type="button"
+      >
+        ADD NEW
+      </button></RouterLink
+    >
+    <Router-Link to="/">
+      <div class="flex justify-center">
+        <img
+          src="./img/Recurso 1.png"
+          alt="logo"
+          class="w-24 h-24 mt-4 mb-2"
+        /></div
+    ></Router-Link>
+    <router-link to="/list">
+      <button
+        class="bg-gray-800 text-white text-xs rounded-full w-16 h-16 flex items-center justify-center mt-9 hover:bg-cyan-400"
+        type="button"
+      >
+        LIST ALL
+      </button></router-link
+    >
+  </div>
   <!-- poner aqui un link logo daily flux y otro Savings -->
 
   <!-- <div
