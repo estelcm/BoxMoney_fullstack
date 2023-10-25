@@ -2,7 +2,7 @@
   <div class="flex justify-around">
     <RouterLink to="/"
       ><button
-        class="bg-gray-800 text-xs text-white rounded-full w-16 h-16 flex items-center justify-center mt-9 hover:bg-cyan-400"
+        class="border-2 border-gray-800 text-xs text-gray-800 rounded-full w-16 h-16 flex items-center justify-center mt-9 hover:border-cyan-400 hover:text-cyan-400 p-1"
         type="button"
       >
         ADD NEW
@@ -18,7 +18,7 @@
     ></Router-Link>
     <router-link to="/list">
       <button
-        class="bg-gray-800 text-white text-xs rounded-full w-16 h-16 flex items-center justify-center mt-9 hover:bg-cyan-400"
+        class="border-2 border-gray-800 text-xs text-gray-800 rounded-full w-16 h-16 flex items-center justify-center mt-9 hover:border-cyan-400 hover:text-cyan-400 p-1"
         type="button"
       >
         LIST ALL
