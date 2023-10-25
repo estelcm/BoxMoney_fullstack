@@ -59,9 +59,7 @@
             v-for="index in Object.keys(movements).reverse()"
             :key="movements[index].id"
           >
-            <tr
-              class="border border-r-white border-l-white border-b-orange-200"
-            >
+            <tr class="border border-r-white border-l-white border-b-cyan-100">
               <td
                 class="px-2 py-2 text-xs md:text-sm lg:text-sm font-thin whitespace-nowrap"
               >
