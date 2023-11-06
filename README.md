@@ -18,6 +18,10 @@ It is a first raw version of a personal money manager, a mix with a moneybox  an
 
 
 
+https://github.com/estelcm/BoxMoney_fullstack/assets/118080271/22f2ca36-c5d4-4d97-95de-83d6d81d061b
+
+
+
 
 
 
