@@ -1,6 +1,50 @@
-# BoxMoney_fullstack
+# Hi! #
 
-In this project will type the instructions to run our project
-npm run dev, or stars, the port used, and how does it work de sql database
 
-About the project and it's aim
+## Conscious GetBy
+![Conscious GetBy logo](./user/src/img/Recurso%201.png)
+
+
+HTML | CSS |Tailwind | JavaScript | Vue.js | RouterView | Node.js | MySQL
+
+It is a first raw version of a personal money manager, a mix with a moneybox  and an accounting book.
+- Ideas for further development: 
+    - Create a unique table for savings, and be able to relate it to objectives with the intention to be able to save money for specific objectives.
+    - Eliminate erroneous movements, with a negative or positive movement as appropriate. 
+    - Proper reponsive version and different views with menu and it's deployment.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Author
+- [@estelcm](https://github.com/estelcm)
+
+
+
+
+
+## 🔗 Links
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/estel-cunill-25809411a)
+
+
+
+## Deployment
+
+To deploy this project run:
+npm i (node js)
+npm run dev
+npm start
+
+MySQL --> Create a schema 'moneyBox'
+
+![table movement](./script_movements_table.png)
