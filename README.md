@@ -7,11 +7,15 @@
 
 HTML | CSS |Tailwind | JavaScript | Vue.js | RouterView | Node.js | MySQL
 
-It is a first raw version of a personal money manager, a mix with a moneybox  and an accounting book.
-- Ideas for further development: 
-    - Create a unique table for savings, and be able to relate it to objectives with the intention to be able to save money for specific objectives.
-    - Eliminate erroneous movements, with a negative or positive movement as appropriate. 
-    - Proper reponsive version and different views with menu and it's deployment.
+The primary objective of this project concept is to assist individuals in managing their finances and gaining awareness of their daily expenses. In today's digital age, it is easy to lose track of spending habits. Therefore, engaging in the exercise of categorizing, organizing, and setting goals fosters financial mindfulness, empowering users to make informed decisions about their expenses.
+
+This project represents an initial prototype of a personal money management tool, combining features of a digital moneybox and an accounting book.
+
+Ideas for future development include:
+
+    - Implementing a dedicated savings table, allowing users to allocate funds towards specific goals.
+    - Implementing error detection mechanisms to identify and rectify inaccurate transactions.
+    - Developing a responsive design for seamless usability across various devices, along with multiple views and a comprehensive menu for enhanced navigation and accessibility.
 
 
 
